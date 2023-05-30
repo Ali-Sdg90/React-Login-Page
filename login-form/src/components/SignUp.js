@@ -11,13 +11,14 @@ const SignUp = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const [isFocused, setIsFocused] = useState({});
 
     useEffect(() => {
         setErrors(validData(data));
         console.log(errors);
-    }, [data]);
+    }, [data, isFocused]);
 
-    const changeHandeler = (event) => {
+    const changeHandler = (event) => {
         if (event.target.name === "acceptTAS") {
             setData({
                 ...data,
@@ -32,64 +33,109 @@ const SignUp = () => {
         // console.log(data);
     };
 
+    const focusHandler = (event) => {
+        setIsFocused({ ...isFocused, [event.target.name]: true });
+    };
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+        if (!Object.keys(errors).length) {
+            console.log(data);
+        } else {
+            setIsFocused({
+                name: true,
+                email: true,
+                password: true,
+                confirmPassword: true,
+                acceptTAS: true,
+            });
+        }
+    };
+
     return (
         <div>
             <h1>SignUp</h1>
-            <form>
-                <label>Name:</label>
-                <input
-                    type="text"
-                    name="name"
-                    autoComplete="off"
-                    value={data.name}
-                    onChange={changeHandeler}
-                ></input>
-                <br></br>
+            <form onSubmit={submitHandler}>
+                <div>
+                    <label>Name: </label>
+                    <input
+                        type="text"
+                        name="name"
+                        autoComplete="off"
+                        value={data.name}
+                        onChange={changeHandler}
+                        onFocus={focusHandler}
+                    ></input>
+                    {errors.name && isFocused.name && (
+                        <span>{errors.name}</span>
+                    )}
+                </div>
 
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    autoComplete="off"
-                    value={data.email}
-                    onChange={changeHandeler}
-                ></input>
-                <br></br>
+                <div>
+                    <label>Email: </label>
+                    <input
+                        type="email"
+                        name="email"
+                        autoComplete="off"
+                        value={data.email}
+                        onChange={changeHandler}
+                        onFocus={focusHandler}
+                    ></input>
+                    {errors.email && isFocused.email && (
+                        <span>{errors.email}</span>
+                    )}
+                </div>
 
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    autoComplete="off"
-                    value={data.password}
-                    onChange={changeHandeler}
-                ></input>
-                <br></br>
+                <div>
+                    <label>Password: </label>
+                    <input
+                        type="password"
+                        name="password"
+                        autoComplete="off"
+                        value={data.password}
+                        onChange={changeHandler}
+                        onFocus={focusHandler}
+                    ></input>
+                    {errors.password && isFocused.password && (
+                        <span>{errors.password}</span>
+                    )}
+                </div>
 
-                <label>Confirm Password:</label>
-                <input
-                    type="password"
-                    name="confirmPassword"
-                    autoComplete="off"
-                    value={data.confirmPassword}
-                    onChange={changeHandeler}
-                ></input>
-                <br></br>
+                <div>
+                    <label>Confirm Password: </label>
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        autoComplete="off"
+                        value={data.confirmPassword}
+                        onChange={changeHandler}
+                        onFocus={focusHandler}
+                    ></input>
+                    {errors.confirmPassword && isFocused.confirmPassword && (
+                        <span>{errors.confirmPassword}</span>
+                    )}
+                </div>
 
-                <label>I agree to the terms and services</label>
-                <input
-                    type="checkbox"
-                    name="acceptTAS"
-                    autoComplete="off"
-                    value={data.acceptTAS}
-                    onChange={changeHandeler}
-                ></input>
-                <br></br>
+                <div>
+                    <label>I agree to the terms and services </label>
+                    <input
+                        type="checkbox"
+                        name="acceptTAS"
+                        autoComplete="off"
+                        value={data.acceptTAS}
+                        onChange={changeHandler}
+                        onFocus={focusHandler}
+                    ></input>
+                    {errors.acceptTAS && isFocused.acceptTAS && (
+                        <span>{errors.acceptTAS}</span>
+                    )}
+                </div>
+
+                <div>
+                    <a href="#">Sing in</a>
+                    <button type="submit">Login</button>
+                </div>
             </form>
-            <div>
-                <a href="#">Sing in</a>
-                <button>Login</button>
-            </div>
         </div>
     );
 };

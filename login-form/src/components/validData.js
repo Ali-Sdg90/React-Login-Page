@@ -2,31 +2,31 @@ const validData = (data) => {
     const errors = {};
 
     if (!data.name.trim()) {
-        errors.name = "Username requared";
+        errors.name = " Username requared";
     } else {
         delete errors.name;
     }
 
     if (!data.email) {
-        errors.email = "Email requared";
+        errors.email = " Email requared";
     } else if (!/\S+@\S+\.\S+/.test(data.email)) {
-        errors.email = "Email address is invalid";
+        errors.email = " Email address is invalid";
     } else {
         delete errors.email;
     }
 
     if (!data.password) {
-        errors.password = "Password is requared";
+        errors.password = " Password is requared";
     } else if (data.password.length < 6) {
-        errors.password = "Password needs to be 6 character or more";
+        errors.password = " Password needs to be 6 character or more";
     } else {
         delete errors.password;
     }
 
     if (!data.confirmPassword) {
-        errors.confirmPassword = "Confirmed the password";
+        errors.confirmPassword = " Confirmed the password";
     } else if (data.confirmPassword !== data.password) {
-        errors.confirmPassword = "Password do not match";
+        errors.confirmPassword = " Password do not match";
     } else {
         delete errors.confirmPassword;
     }
@@ -34,7 +34,7 @@ const validData = (data) => {
     if (data.acceptTAS) {
         delete errors.acceptTAS;
     } else {
-        errors.acceptTAS = "Accept our regulations";
+        errors.acceptTAS = " Accept our regulations";
     }
 
     return errors;
