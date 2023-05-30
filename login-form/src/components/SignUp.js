@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import validData from "./validData";
 
+import Styles from "./SingUp.module.css";
+
 const SignUp = () => {
     const [data, setData] = useState({
         name: "",
@@ -53,11 +55,11 @@ const SignUp = () => {
     };
 
     return (
-        <div>
-            <h1>SignUp</h1>
-            <form onSubmit={submitHandler}>
-                <div>
-                    <label>Name: </label>
+        <div className={Styles.container}>
+            <form onSubmit={submitHandler} className={Styles.formContainer}>
+                <h1 className={Styles.header}>SignUp</h1>
+                <div className={Styles.formField}>
+                    <label>Username: </label>
                     <input
                         type="text"
                         name="name"
@@ -65,13 +67,18 @@ const SignUp = () => {
                         value={data.name}
                         onChange={changeHandler}
                         onFocus={focusHandler}
+                        className={
+                            errors.name && isFocused.name
+                                ? Styles.uncompleted
+                                : Styles.formInput
+                        }
                     ></input>
                     {errors.name && isFocused.name && (
                         <span>{errors.name}</span>
                     )}
                 </div>
 
-                <div>
+                <div className={Styles.formField}>
                     <label>Email: </label>
                     <input
                         type="email"
@@ -80,13 +87,18 @@ const SignUp = () => {
                         value={data.email}
                         onChange={changeHandler}
                         onFocus={focusHandler}
+                        className={
+                            errors.email && isFocused.email
+                                ? Styles.uncompleted
+                                : Styles.formInput
+                        }
                     ></input>
                     {errors.email && isFocused.email && (
                         <span>{errors.email}</span>
                     )}
                 </div>
 
-                <div>
+                <div className={Styles.formField}>
                     <label>Password: </label>
                     <input
                         type="password"
@@ -95,13 +107,18 @@ const SignUp = () => {
                         value={data.password}
                         onChange={changeHandler}
                         onFocus={focusHandler}
+                        className={
+                            errors.password && isFocused.password
+                                ? Styles.uncompleted
+                                : Styles.formInput
+                        }
                     ></input>
                     {errors.password && isFocused.password && (
                         <span>{errors.password}</span>
                     )}
                 </div>
 
-                <div>
+                <div className={Styles.formField}>
                     <label>Confirm Password: </label>
                     <input
                         type="password"
@@ -110,28 +127,35 @@ const SignUp = () => {
                         value={data.confirmPassword}
                         onChange={changeHandler}
                         onFocus={focusHandler}
+                        className={
+                            errors.confirmPassword && isFocused.confirmPassword
+                                ? Styles.uncompleted
+                                : Styles.formInput
+                        }
                     ></input>
                     {errors.confirmPassword && isFocused.confirmPassword && (
                         <span>{errors.confirmPassword}</span>
                     )}
                 </div>
 
-                <div>
-                    <label>I agree to the terms and services </label>
-                    <input
-                        type="checkbox"
-                        name="acceptTAS"
-                        autoComplete="off"
-                        value={data.acceptTAS}
-                        onChange={changeHandler}
-                        onFocus={focusHandler}
-                    ></input>
+                <div className={Styles.formField}>
+                    <div className={Styles.checkBoxContainer}>
+                        <label>I agree to the terms and services </label>
+                        <input
+                            type="checkbox"
+                            name="acceptTAS"
+                            autoComplete="off"
+                            value={data.acceptTAS}
+                            onChange={changeHandler}
+                            onFocus={focusHandler}
+                        ></input>
+                    </div>
                     {errors.acceptTAS && isFocused.acceptTAS && (
                         <span>{errors.acceptTAS}</span>
                     )}
                 </div>
 
-                <div>
+                <div className={Styles.formButtones}>
                     <a href="#">Sing in</a>
                     <button type="submit">Login</button>
                 </div>
