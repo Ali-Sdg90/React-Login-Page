@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import validData from "./validData";
 
 const SignUp = () => {
     const [data, setData] = useState({
@@ -9,20 +10,26 @@ const SignUp = () => {
         acceptTAS: false,
     });
 
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        setErrors(validData(data));
+        console.log(errors);
+    }, [data]);
+
     const changeHandeler = (event) => {
         if (event.target.name === "acceptTAS") {
             setData({
                 ...data,
                 [event.target.name]: event.target.checked,
             });
-            console.log(data);
         } else {
             setData({
                 ...data,
                 [event.target.name]: event.target.value,
             });
-            console.log(data);
         }
+        // console.log(data);
     };
 
     return (
