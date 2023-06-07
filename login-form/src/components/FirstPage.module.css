@@ -1,0 +1,81 @@
+.container {
+    display: grid;
+    grid-template-rows: 2fr 2fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    cursor: default;
+}
+
+.container h1 {
+    font-size: 90px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 4px 0 rgba(98, 0, 255, 0.4), -4px 0 rgba(255, 0, 0, 0.25),
+        0 0 90px rgba(255, 255, 255, 0.342);
+}
+
+.container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+button {
+    font-size: 50px;
+    font-family: sans-serif;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: rgb(173, 173, 173);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+    transition: box-shadow 0.15s, transform 0.15s, letter-spacing 0.15s,
+        background 0.15s;
+    width: 220px;
+    border: 1px solid black;
+    letter-spacing: 0.7px;
+}
+
+.container button {
+    letter-spacing: 0;
+}
+
+button:hover {
+    letter-spacing: 1px;
+    background: rgb(187, 187, 187);
+}
+
+button:active {
+    letter-spacing: 0.87px;
+    transform: translate(0, 2px);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+    background: rgb(162, 162, 162);
+}
+
+.container button:active {
+    letter-spacing: 0.5px;
+}
+
+span {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+p {
+    color: rgb(85, 85, 85);
+    transition: color 0.1s;
+}
+
+p:hover {
+    color: rgb(172, 172, 172);
+}

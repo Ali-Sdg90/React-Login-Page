@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import validData from "./validData";
 
 import Styles from "./SingUp.module.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [data, setData] = useState({
@@ -93,9 +94,9 @@ const Login = () => {
                         <span>{errors.password}</span>
                     )}
                 </div>
-
+                <br></br>
                 <div className={Styles.formButtones}>
-                    <a href="#">Sing in</a>
+                    <Link to="/signup">Sing in</Link>
                     <button type="submit">Login</button>
                 </div>
             </form>
