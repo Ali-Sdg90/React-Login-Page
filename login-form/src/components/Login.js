@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import validData from "./validData";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import Styles from "./SingUp.module.css";
 
-const SignUp = () => {
+const Login = () => {
     const [data, setData] = useState({
-        name: "",
         email: "",
         password: "",
-        confirmPassword: "",
-        acceptTAS: false,
     });
 
     const [errors, setErrors] = useState({});
     const [isFocused, setIsFocused] = useState({});
 
     useEffect(() => {
-        setErrors(validData(data,"signUp"));
+        setErrors(validData(data, "login"));
         // console.log(errors);
     }, [data, isFocused]);
 
@@ -42,47 +37,22 @@ const SignUp = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        notify();
         if (!Object.keys(errors).length) {
             console.log("OK");
             // console.log(data);
         } else {
             console.log("Error");
             setIsFocused({
-                name: true,
                 email: true,
                 password: true,
-                confirmPassword: true,
-                acceptTAS: true,
             });
         }
     };
 
-    const notify = () => toast("Wow so easy!");
-
     return (
         <div className={Styles.container}>
             <form onSubmit={submitHandler} className={Styles.formContainer}>
-                <h1 className={Styles.header}>SignUp</h1>
-                <div className={Styles.formField}>
-                    <label>Username: </label>
-                    <input
-                        type="text"
-                        name="name"
-                        autoComplete="off"
-                        value={data.name}
-                        onChange={changeHandler}
-                        onFocus={focusHandler}
-                        className={
-                            errors.name && isFocused.name
-                                ? Styles.uncompleted
-                                : Styles.formInput
-                        }
-                    ></input>
-                    {errors.name && isFocused.name && (
-                        <span>{errors.name}</span>
-                    )}
-                </div>
+                <h1 className={Styles.header}>Login</h1>
 
                 <div className={Styles.formField}>
                     <label>Email: </label>
@@ -124,51 +94,13 @@ const SignUp = () => {
                     )}
                 </div>
 
-                <div className={Styles.formField}>
-                    <label>Confirm Password: </label>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        autoComplete="off"
-                        value={data.confirmPassword}
-                        onChange={changeHandler}
-                        onFocus={focusHandler}
-                        className={
-                            errors.confirmPassword && isFocused.confirmPassword
-                                ? Styles.uncompleted
-                                : Styles.formInput
-                        }
-                    ></input>
-                    {errors.confirmPassword && isFocused.confirmPassword && (
-                        <span>{errors.confirmPassword}</span>
-                    )}
-                </div>
-
-                <div className={Styles.formField}>
-                    <div className={Styles.checkBoxContainer}>
-                        <label>I agree to the terms and services </label>
-                        <input
-                            type="checkbox"
-                            name="acceptTAS"
-                            autoComplete="off"
-                            value={data.acceptTAS}
-                            onChange={changeHandler}
-                            onFocus={focusHandler}
-                        ></input>
-                    </div>
-                    {errors.acceptTAS && isFocused.acceptTAS && (
-                        <span>{errors.acceptTAS}</span>
-                    )}
-                </div>
-
                 <div className={Styles.formButtones}>
-                    <a href="#">Login</a>
-                    <button type="submit">Sing in</button>
+                    <a href="#">Sing in</a>
+                    <button type="submit">Login</button>
                 </div>
             </form>
-            {/* <ToastContainer /> */}
         </div>
     );
 };
 
-export default SignUp;
+export default Login;

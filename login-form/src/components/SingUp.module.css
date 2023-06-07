@@ -135,6 +135,10 @@ input[type="checkbox"]:focus {
     background: #004aaa;
 }
 
+.formButtones button:active{
+    background: #003c8b;
+}
+
 .formButtones a {
     color: #1a73e8;
     text-decoration: none;

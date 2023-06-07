@@ -1,11 +1,5 @@
-const validData = (data) => {
+const validData = (data, type) => {
     const errors = {};
-
-    if (!data.name.trim()) {
-        errors.name = " Username requared";
-    } else {
-        delete errors.name;
-    }
 
     if (!data.email) {
         errors.email = " Email requared";
@@ -23,18 +17,26 @@ const validData = (data) => {
         delete errors.password;
     }
 
-    if (!data.confirmPassword) {
-        errors.confirmPassword = " Confirmed the password";
-    } else if (data.confirmPassword !== data.password) {
-        errors.confirmPassword = " Password do not match";
-    } else {
-        delete errors.confirmPassword;
-    }
+    if (type === "signUp") {
+        if (!data.name.trim()) {
+            errors.name = " Username requared";
+        } else {
+            delete errors.name;
+        }
 
-    if (data.acceptTAS) {
-        delete errors.acceptTAS;
-    } else {
-        errors.acceptTAS = " Accept our regulations";
+        if (!data.confirmPassword) {
+            errors.confirmPassword = " Confirmed the password";
+        } else if (data.confirmPassword !== data.password) {
+            errors.confirmPassword = " Password do not match";
+        } else {
+            delete errors.confirmPassword;
+        }
+
+        if (data.acceptTAS) {
+            delete errors.acceptTAS;
+        } else {
+            errors.acceptTAS = " Accept our regulations";
+        }
     }
 
     return errors;
