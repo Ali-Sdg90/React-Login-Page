@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import validData from "./validData";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Styles from "./SingUp.module.css";
 
@@ -32,7 +34,6 @@ const SignUp = () => {
                 [event.target.name]: event.target.value,
             });
         }
-        // console.log(data);
     };
 
     const focusHandler = (event) => {
@@ -41,6 +42,7 @@ const SignUp = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
+        notify();
         if (!Object.keys(errors).length) {
             console.log(data);
         } else {
@@ -53,6 +55,8 @@ const SignUp = () => {
             });
         }
     };
+
+    const notify = () => toast("Wow so easy!");
 
     return (
         <div className={Styles.container}>
@@ -160,6 +164,7 @@ const SignUp = () => {
                     <button type="submit">Login</button>
                 </div>
             </form>
+            {/* <ToastContainer /> */}
         </div>
     );
 };
