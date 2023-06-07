@@ -163,7 +163,7 @@ const SignUp = () => {
                 </div>
 
                 <div className={Styles.formButtones}>
-                    <Link to="/login">Login</Link>
+                    <Link to="/React-Login-Page/login">Login</Link>
                     <button type="submit">Sing in</button>
                 </div>
             </form>

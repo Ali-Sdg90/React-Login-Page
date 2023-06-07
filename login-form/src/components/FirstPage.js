@@ -7,10 +7,10 @@ const FirstPage = () => {
         <div className={Styles.container}>
             <h1>SignUp or Login</h1>
             <div>
-                <Link to="React-Login-Page/signup">
+                <Link to="/React-Login-Page/signup">
                     <button>SignUp</button>
                 </Link>
-                <Link to="React-Login-Page/login">
+                <Link to="/React-Login-Page/login">
                     <button>Login</button>
                 </Link>
             </div>
